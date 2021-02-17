@@ -1,5 +1,4 @@
 from . import models
-
 import pandas as pd
 
 class PeptideRTPredictor:
@@ -15,10 +14,15 @@ class PeptideRTPredictor:
 
     def predict(self, sequences):
         pred = models.predict(self.model, sequences, rt_min=self.rt_min, rt_max=self.rt_max)
+        
         return pd.DataFrame.from_items([
-            ('sequence', sequences),
-            ('irt', pred.flatten())
+            ('sequence' ,sequences ),
+            ('irt' ,pred.flatten())            
         ])
-
+    
+    def predict_test(self, x):
+        pred = models.predict_test(self.model, x, rt_min=self.rt_min, rt_max=self.rt_max)
+        return pred
+         
     def load_weights(self, path=None):
         self.model.load_weights(path)
