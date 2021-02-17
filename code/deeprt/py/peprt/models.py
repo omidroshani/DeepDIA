@@ -13,8 +13,10 @@ max_sequence_length = 50
 
 def peptide_to_tensor(sequences):
     def aa_to_vector(aa):
+        
         vec = np.zeros(aa_size, dtype=int)
         vec['ARNDCEQGHILKMFPSTWYV'.index(aa)] = 1
+        
         return vec
 
     def seq_to_tensor(seq):
@@ -54,8 +56,11 @@ def build_model():
         metrics=["mean_absolute_percentage_error"])
     return model
 
-
 def predict(model, sequences, rt_min=-50, rt_max=150):
     x = peptide_to_tensor(sequences)
+    y = model.predict(x)
+    return denormalize(y, min=rt_min, max=rt_max)
+def predict_test(model, x, rt_min=-50, rt_max=150):
+    #x = peptide_to_tensor(sequences)
     y = model.predict(x)
     return denormalize(y, min=rt_min, max=rt_max)
