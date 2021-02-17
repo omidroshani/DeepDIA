@@ -44,4 +44,3 @@ def load_peptides_csv(file, sep=','):
         "modification": df['modification'].values 
             if 'modification' in df else None
     }
-
