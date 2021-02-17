@@ -6,7 +6,7 @@ from .preprocessing import DataConverter
 from .modeling import build_model, load_model
 
 
-def split_train_validate(x, y, validate_percent=.33, seed=None):
+def split_train_validate(x, y, validate_percent=.33, seed=0):
     length = len(x)
     np.random.seed(seed)
     indexs = np.random.permutation(length)
@@ -64,6 +64,7 @@ class PeptideMS2Trainer:
     def train(self, data, epochs=100, patience=15, validate_percent=.33, seed=0):
         x, y = self.converter.data_to_tensor(data)
         x_train, y_train, x_validate, y_validate, train_indexs, validate_indexs = split_train_validate(x, y, validate_percent=validate_percent, seed=seed)
+        print("y_validate",(y_validate.shape))
         split = {
             'validate_percent': validate_percent,
             'seed': seed,
