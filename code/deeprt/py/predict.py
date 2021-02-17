@@ -46,5 +46,3 @@ for file in filenames:
     # with open(re.sub(r'\.irt\.csv$', '.prediction.irt.csv', file), 'w') as f:
     # with open(re.sub(r'\.sequence\.txt$', '.prediction.irt.csv', file), 'w') as f:
         prediction.to_csv(f, index=False)
-
-        
