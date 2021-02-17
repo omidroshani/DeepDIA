@@ -22,6 +22,9 @@ class PeptideMS2Predictor:
     def load_model(self, model_path, **kwargs):
         self.model = load_model(model_path, **kwargs)
 
+    def predict_test(self, x):
+        y = self.model.predict(x)
+        return   y
 
     def predict(self, sequences, modifications=None):
         if modifications is None:
