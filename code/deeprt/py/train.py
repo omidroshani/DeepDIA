@@ -29,16 +29,15 @@ train_dir = './irt'
 data, data_files = load_data_dir(train_dir)
 
 
-os.makedirs(os.path.join(train_dir, 'models1'), exist_ok=True)
+os.makedirs(os.path.join(train_dir, 'model'), exist_ok=True)
 trainer = PeptideRTTrainer(
-    save_path=os.path.join(train_dir, 'models1', 'epoch_{epoch:03d}.hdf5'),
+    save_path=os.path.join(train_dir, 'model', 'epoch_{epoch:03d}.hdf5'),
     log_path=os.path.join(train_dir, 'training.log')
 )
 result = trainer.train(data)
 result['files'] = data_files
 
-trainer.save_model(os.path.join(train_dir, 'models1', 'last_epoch.hdf5'))
+trainer.save_model(os.path.join(train_dir, 'model', 'last_epoch.hdf5'))
 
 with open(os.path.join(train_dir, 'training.json'), 'w') as f:
     json.dump(result, f)
-
