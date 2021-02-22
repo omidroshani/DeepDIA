@@ -11,7 +11,6 @@ from pepms2.training import split_train_validate
 from pepms2.utils import load_data_dir, save_data_json
 from pepms2.preprocessing import DataConverter
 from pepms2.modeling import cosine_similarity
-import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 import argparse
