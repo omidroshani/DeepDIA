@@ -26,6 +26,8 @@ else:
 
 train_dir = '.'
 train_dir = os.path.join(train_dir ,charge)
+train_dir = os.path.join(train_dir ,'data')
+print("train_dir",train_dir)
 
 data, data_files = load_data_dir(train_dir)
 options=PeptideMS2Options.default()
@@ -45,7 +47,7 @@ for f in os.listdir(os.path.join(predict_dir,charge)):
   if re.match(r'^epoch_[0-9]+\.hdf5$', f) is not None:
       model_path =os.path.join(predict_dir, charge, f) 
 
-
+print("model_path",model_path)
 predictor = PeptideMS2Predictor(options)
 predictor.model = build_model_from_weights(options=options, weights_path=model_path)
 y_pred = predictor.predict_test(x_validate)
