@@ -13,9 +13,9 @@ options = PeptideMS2Options.default()
 
 
 if args.charge == 'charge2':
-  train_dir='./charge2'
+  train_dir='./charge2/data'
 else:
-  train_dir='./charge3'
+  train_dir='./charge3/data'
 data, data_files = load_data_dir(train_dir)
 # data, filter_indexs = filter_data(data, max_sequence_length=options.max_sequence_length, threshold=0.1)
 
@@ -34,4 +34,5 @@ result['files'] = data_files
 trainer.save_model(os.path.join(train_dir, 'model', 'last_epoch.hdf5'))
 
 save_data_json(result, os.path.join(train_dir, 'training.json'))
+
 
