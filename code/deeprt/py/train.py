@@ -25,7 +25,7 @@ def load_data_dir(dir):
     return data, filenames
 
 
-train_dir = './irt'
+train_dir = './irt/data'
 data, data_files = load_data_dir(train_dir)
 
 
