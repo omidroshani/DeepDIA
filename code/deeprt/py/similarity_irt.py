@@ -52,7 +52,7 @@ def split_train_validate(x, y, validate_percent=.33, seed=None):
     return x_train, y_train, x_validate, y_validate, train_indexs, validate_indexs
 
 #read all data and spliti it to train and test set
-train_dir = './irt'
+train_dir = './irt/data'
 data, data_files = load_data_dir(train_dir)
 rt_min=-50
 rt_max=150
@@ -105,4 +105,5 @@ plt.ylabel("Experimental iRT")
 
 plt.savefig('irt_hele2.png')
 plt.show()
+     
      
